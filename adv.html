@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <style>
+     th {
+         cursor: pointer;
+         border: 1px solid black;
+         border-collapse: collapse;
+     }
+     td {
+         border: 1px solid black;
+         border-collapse: collapse;
+     }
+     table {
+         border-collapse: collapse;
+     }
+ </style>
+  <title>StatsHub: Baketball management system</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 0.8px;
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .login-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .login-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .login-buttons a {
+            margin-right: 10px;
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+        }
+
+        .login-buttons a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+        
+        
+
+        nav {
+            background-color: #444;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="team_standings.html">BACK</a>
+    </header>
+    
+</head>
+<body>
+ <table id="myTable">
+     <thead>
+      <tr>
+          <th>TEAM</th>
+          <th>GAMES</th>
+          <th>GS</th>
+          <th>MP</th>
+          <th>FG</th>
+          <th>FGA</th>
+          <th>FG%</th>
+          <th>3P</th>
+          <th>3PA</th>
+          <th>3P%</th>
+          <th>2P</th>
+          <th>2PA</th>
+          <th>2P%</th>
+          <th>FT</th>
+          <th>FTA</th>
+          <th>FT%</th>
+          <th>ORB</th>
+          <th>DRB</th>
+          <th>TRB</th>
+          <th>AST</th>
+          <th>STL</th>
+          <th>BLK</th>
+          <th>TOV</th>
+          <th>PTS</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+        <td></td>
+      </tr>
+      {%for team in details%}
+      <tr>
+          <td>{{team[0]}}</td>
+          <td>{{team[1]}}</td>
+          <td>{{team[2]}}</td>
+          <td>{{team[3]}}</td>
+          <td>{{team[4]}}</td>
+          <td>{{team[5]}}</td>
+          <td>{{team[6]}}</td>
+          <td>{{team[7]}}</td>
+          <td>{{team[8]}}</td>
+          <td>{{team[9]}}</td>
+          <td>{{team[10]}}</td>
+          <td>{{team[11]}}</td>
+          <td>{{team[12]}}</td>
+          <td>{{team[13]}}</td>
+          <td>{{team[14]}}</td>
+          <td>{{team[15]}}</td>
+          <td>{{team[16]}}</td>
+          <td>{{team[17]}}</td>
+          <td>{{team[18]}}</td>
+          <td>{{team[19]}}</td>
+          <td>{{team[20]}}</td>
+          <td>{{team[21]}}</td>
+          <td>{{team[22]}}</td>
+          <td>{{team[23]}}</td>
+      </tr>
+      {% endfor %}
+     </tbody>
+ </table>
+    <a href='allstats.html'>CLICK TO SEE STATS OF EVERY PLAYER IN THE
+ <script>
+     document.querySelectorAll('#myTable th').forEach(th => th.addEventListener('click', () => {
+         const table = th.closest('table');
+         const rows = Array.from(table.querySelectorAll('tr:nth-child(n+2)'));
+         const index = Array.from(th.parentNode.children).indexOf(th);
+         const asc = th.classList.contains('asc');
+         rows.sort((rowA, rowB) => {
+             const cellA = rowA.children[index].textContent;
+             const cellB = rowB.children[index].textContent;
+             return asc ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+         });
+         rows.forEach(row => table.appendChild(row));
+         th.classList.toggle('asc');
+     }));
+ </script>
+</body>
+</html>
