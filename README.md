@@ -1,1 +1,1 @@
-# StatHub
+# StatHub- A NBA statistics website that helpsus track different information about teams, players and coaches. All relevant info refarding your favourite nba team and player can be found here. we used sql and flask
